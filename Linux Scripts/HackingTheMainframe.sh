@@ -6,7 +6,7 @@ i=10
 while [ $i -ge 0 ]
 do
         sleep 1s
-        tput setaf 2; echo -n "..."
+        tput setaf 2; echo -n ".."
         ((i--))
 done
 echo ".]"
