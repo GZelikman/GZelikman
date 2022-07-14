@@ -13,9 +13,9 @@ double floor(double __x);
 int main(void){
     //both primenumbers are generated 
     srand(time(0));
-    long long p = getPrime(10000, 1000);
+    long long p = getPrime(65536, 10000);
     printf("Prime 1: %lld", p);
-    long long q = getPrime(10000, 1000);
+    long long q = getPrime(65536, 10000);
     printf(", Prime 2: %lld\n", q);
     //n and phi of n are calculated 
     long long n = p * q;
