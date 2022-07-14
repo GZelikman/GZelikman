@@ -2,7 +2,7 @@
 #include <math.h>
 #define plaintext 25
 
-long long getPrime();
+long long getPrime(); 
 long long getInverse(long long d, long long phi_n);
 int isPrime(long long prime);
 int rand();
