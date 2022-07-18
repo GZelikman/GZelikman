@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-#define plaintext 25
+#define plaintext "ABA"
 
 long long getPrime(); 
 long long getInverse(long long d, long long phi_n);
@@ -13,9 +13,9 @@ double floor(double __x);
 int main(void){
     //both primenumbers are generated 
     srand(time(0));
-    long long p = getPrime(65536, 10000);
+    long long p = getPrime(42949, 10000);
     printf("Prime 1: %lld", p);
-    long long q = getPrime(65536, 10000);
+    long long q = getPrime(42949, 10000);
     printf(", Prime 2: %lld\n", q);
     //n and phi of n are calculated 
     long long n = p * q;
@@ -81,9 +81,22 @@ int isPrime(long long prime){
 }
 
 long long getInverse(long long d, long long phi_n){
-    //very inefficent but also works
-    //it would way faster to get the inverse with the extended euclidean algorithm
-    for (int x = 1; x < phi_n; x++)
-        if (((d%phi_n) * (x%phi_n)) % phi_n == 1)
-            return x;
+    //the Inverse is calculated with help of the extended euclidean algorithm
+    long long mitte = 0;
+    long long rechts1 = 0;
+    long long rechts2 = 1;
+    while(d > 1){
+        while(d <= phi_n){
+            phi_n -= d;
+            mitte += 1;
+        }
+        long long zw1 = phi_n;
+        phi_n = d;
+        d = zw1;
+        long long rechts3 = rechts1 - (rechts2 * mitte);
+        mitte = 0;
+        rechts1 = rechts2;
+        rechts2 = rechts3;
+    }
+    return rechts2;
 }
