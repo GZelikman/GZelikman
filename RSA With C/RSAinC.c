@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-#define plaintext "ABA"
+#define plaintext 25
 
 long long getPrime(); 
 long long getInverse(long long d, long long phi_n);
@@ -27,11 +27,15 @@ int main(void){
     }
     //d will be get choosen, but only a little bit higher then der biggest primenumber
     //it was easier to impliment it but it is totally unsave
-    long long d = getPrime(lower + 10, lower);
+    srand(time(0));
+    long long d = getPrime(phi_n, lower);
     printf("d: %lld", d);
     //e is calculated
     long long e = getInverse(d, phi_n);
     printf(", e: %lld\n", e);
+    if(e < 1){
+        e += phi_n;
+    }
     //encrypten and decrypten of the Plaintext
     long long encrypttext = 1;
     for(int i = 1; i <= d; i++){
