@@ -1,4 +1,4 @@
-Hello There,
+## HI
+I'm Gregory, currently studying IT-Security in Germany.
 
-I am just a guy,
-I am just doing things
+You can contact me at ![Email](contact@gregoryzelikman.de)
